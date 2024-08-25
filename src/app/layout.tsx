@@ -2,8 +2,8 @@ import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import "./globals.css";
 import React from "react";
-import ToastProvider from "@/components/toast-provider.component";
 import SessionWrapper from "@/app/providers";
+import ToastProvider from "@/app/_components/toast-provider.component";
 
 const inter = Inter({subsets: ["latin"]});
 

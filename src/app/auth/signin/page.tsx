@@ -1,4 +1,4 @@
-import SigninButton from "@/app/auth/signin/login-button.component";
+import SigninButton from "@/app/_components/auth/login-button.component";
 import {getServerSession} from "next-auth";
 import {redirect} from "next/navigation";
 

@@ -4,7 +4,7 @@ import {getPrismaClient} from "@/utils/db";
 
 const authOptions: NextAuthOptions = {
   pages:{
-    signIn: "/auth/signIn",
+    signIn: "/auth/signin",
   },
   session: {
     strategy: "jwt",
