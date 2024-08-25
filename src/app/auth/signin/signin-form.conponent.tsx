@@ -1,33 +1,22 @@
 "use client"
 
 import {SubmitHandler, useForm} from "react-hook-form";
-import {toast} from "react-toastify";
-import {signupUser} from "@/app/auth/auth.actions";
-import {useRouter} from "next/router";
+import {signIn} from "next-auth/react";
 
-type SignupInputs = {
+type SigninInputs = {
   username: string
   password: string
-  confirmPassword: string
 }
 
-export default function SignupForm() {
+export default function SigninForm() {
   const {
     register,
     handleSubmit,
     formState: {errors},
-  } = useForm<SignupInputs>()
+  } = useForm<SigninInputs>()
 
-  const router = useRouter()
-
-
-  const onSubmit: SubmitHandler<SignupInputs> = async ({username, password, confirmPassword}) => {
-    if (password != confirmPassword) {
-      toast.error("Passwords do not match");
-    } else {
-      await signupUser(username, password);
-      await router.push("/auth/login");
-    }
+  const onSubmit: SubmitHandler<SigninInputs> = async ({username, password}) => {
+    await signIn("Credentials", {username, password});
   }
 
   return (
@@ -43,11 +32,6 @@ export default function SignupForm() {
              placeholder={"Password"}
              className={"input input-bordered w-full "} {...register("password", {required: true})} />
       {errors.password && <span className={"text-error"}>Password is required</span>}
-
-
-      <input type={"text"}
-             placeholder={"Confirm Password"}
-             className={"input input-bordered w-full "} {...register("confirmPassword")} />
 
       <button type="submit" className={"btn btn-primary w-full"}>Register</button>
     </form>

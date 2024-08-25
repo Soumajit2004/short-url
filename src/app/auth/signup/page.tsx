@@ -9,8 +9,7 @@ export default function Signup() {
         <SignupForm/>
       </div>
 
-      <span className={"mx-auto"}>already have an account? <Link href={"/auth/signin"}
-                                           className={"link link-primary"}>login</Link></span>
+      <span className={"mx-auto"}>already have an account? <Link href={"/auth/signin"} className={"link link-primary"}>login</Link></span>
     </main>
   );
 }
