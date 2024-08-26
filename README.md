@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Short URL
+
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/Soumajit2004/short-url)
+
+**Short URL** is a simple and efficient URL shortener built using Next.js and MySQL. This project is part of my
+portfolio, showcasing my skills in full-stack development.
+
+## Screenshots
+
+### Demo video link here: [video link](https://youtu.be/xQI1SQzC99c)
+
+![Screenshot 1](https://github.com/Soumajit2004/short-url/blob/1222e1e2993f7b979676ef002680aac4d843f4b8/screenshots/Screenshot%20from%202024-08-26%2018-41-03.png?raw=true)
+
+![Screenshot 2](https://github.com/Soumajit2004/short-url/blob/1222e1e2993f7b979676ef002680aac4d843f4b8/screenshots/Screenshot%20from%202024-08-26%2018-41-19.png?raw=true)
+
+![Screenshot 3](https://github.com/Soumajit2004/short-url/blob/1222e1e2993f7b979676ef002680aac4d843f4b8/screenshots/Screenshot%20from%202024-08-26%2018-41-36.png?raw=true)
+
+## Features
+
+- Shorten long URLs into concise, easy-to-share links.
+- Track the number of times a shortened URL has been accessed.
+- Manage URLs with a simple and intuitive interface.
+
+## Technologies Used
+
+- **Next.js**: A React framework for building fast, user-friendly web applications.
+- **MySQL**: A relational database management system for storing URLs and their corresponding short codes.
+- **Prisma**: An ORM for database migrations and queries.
+- **Node.js**: JavaScript runtime for the server-side logic.
 
 ## Getting Started
 
-First, run the development server:
+To run this project locally, follow the steps below:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Node.js** (v14.x or later)
+- **MySQL** (v5.x or later)
+- **Git**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **Clone the repository:**
 
-## Learn More
+   ```bash
+   git clone https://github.com/Soumajit2004/short-url.git
+   cd short-url
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. **Set up the database:**
 
-## Deploy on Vercel
+    - Create a MySQL database named `short_url`.
+    - Push the Prisma schema to your database:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+      ```bash
+      npx prisma db push
+      ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    - Generate the Prisma client:
+
+      ```bash
+      npx prisma generate
+      ```
+
+4. **Configure environment variables:**
+
+   Create a `.env.local` file in the root directory and add the following environment variables:
+
+   ```bash
+   DATABASE_URL="mysql://root:password@localhost:3307/database"
+   NEXTAUTH_URL=http://localhost:3000/
+   NEXTAUTH_SECRET="REQUIRED"
+   GITHUB_ID="CREATE A GITHUB OAUTH APP"
+   GITHUB_SECRET="CREATE A GITHUB OAUTH APP"
+   ```
+
+5. **Run the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+   The application will be running on [http://localhost:3000](http://localhost:3000).
+
+## Usage
+
+Once the server is running, you can shorten URLs by navigating to the homepage, entering a long URL, and clicking "
+Shorten." The shortened URL will be generated, which you can then share or track its usage.
+
+## Deployment
+
+For deployment, you can use services like Vercel, Netlify, or any cloud provider that supports Next.js applications.
+Make sure to configure the environment variables on the deployment platform as described above.
+
+## Contact
+
+For any inquiries or issues, please contact me through GitHub.
