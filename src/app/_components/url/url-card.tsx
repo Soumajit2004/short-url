@@ -32,9 +32,15 @@ export default function UrlCard({id, originalUrl}: { id: string; originalUrl: st
         </button>
         <EditUrlButton id={id} originalUrl={originalUrl}/>
         {/* eslint-disable-next-line react/jsx-no-undef */}
-        <Link className="btn btn-primary" href={`/redirect/${id}`} target={"_blank"}>
-          Visit <span className="material-symbols-outlined">open_in_new</span>
+        <Link className="btn btn-square btn-primary" href={`/redirect/${id}`} target={"_blank"}>
+          <span className="material-symbols-outlined">open_in_new</span>
         </Link>
+
+        <button className="btn btn-primary "
+                onClick={() => navigator.clipboard.writeText("http://localhost:3000/" + `redirect/${id}`)}>
+          <span className="material-symbols-outlined">content_copy</span> Copy
+          URL
+        </button>
       </div>
     </div>
   )
