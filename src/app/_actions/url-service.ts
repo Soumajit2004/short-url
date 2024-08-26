@@ -3,9 +3,15 @@
 import {getPrismaClient} from "@/utils/db";
 import {getServerSession} from "next-auth";
 
-export const createUrl = async (originalUrl: string) => {
+const getContext = async () => {
   const session = await getServerSession()
   const prisma = getPrismaClient()
+
+  return [session, prisma] as const
+}
+
+export const createUrl = async (originalUrl: string) => {
+  const [session, prisma] = await getContext()
 
   return prisma.link.create({
     //@ts-ignore
@@ -20,9 +26,13 @@ export const createUrl = async (originalUrl: string) => {
 }
 
 export const fetchUrls = async () => {
-  const prisma = getPrismaClient()
-  const session = await getServerSession()
+  const [session, prisma] = await getContext()
 
+  return prisma.link.findMany({where: {owner: {email: session?.user?.email as string}}});
+}
 
-  return prisma.link.findMany({where: {owner: {id: session?.user?.email as string}}});
+export const deleteUrl = async (id: string) => {
+  const [session, prisma] = await getContext()
+
+  return prisma.link.delete({where: {id: id}});
 }

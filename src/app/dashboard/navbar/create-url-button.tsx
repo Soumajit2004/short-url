@@ -3,6 +3,7 @@
 import {SubmitHandler, useForm} from "react-hook-form";
 import {createUrl} from "@/app/_actions/url-service";
 import {useRef} from "react";
+import {useRouter} from "next/navigation";
 
 type UrlInputs = {
   originalUrl: string
@@ -16,11 +17,14 @@ export default function CreateUrlButton() {
     formState: {errors},
   } = useForm<UrlInputs>()
 
+  const router = useRouter()
+
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const onSubmit: SubmitHandler<UrlInputs> = async ({originalUrl}) => {
     dialogRef.current?.close()
     await createUrl(originalUrl)
+    router.refresh()
   }
 
   const openDialog = () => {
@@ -29,8 +33,8 @@ export default function CreateUrlButton() {
 
   return (
     <>
-      <button className="btn btn-secondary" onClick={openDialog}>
-        New URL
+      <button className="btn btn-primary" onClick={openDialog}>
+        <span className="material-symbols-outlined">add</span> New URL
       </button>
 
       <dialog ref={dialogRef} className="modal">
