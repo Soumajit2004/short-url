@@ -2,6 +2,7 @@
 
 import {getPrismaClient} from "@/utils/db";
 import {getServerSession} from "next-auth";
+import {nanoid} from "nanoid";
 
 const getContext = async () => {
   const session = await getServerSession()
@@ -16,6 +17,7 @@ export const createUrl = async (originalUrl: string) => {
   return prisma.link.create({
     //@ts-ignore
     data: {
+      id: nanoid(),
       originalLink: originalUrl, owner: {
         connect: {
           email: session?.user?.email as string,
