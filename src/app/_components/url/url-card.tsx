@@ -2,6 +2,7 @@
 
 import {deleteUrl} from "@/app/_actions/url-service";
 import {useRouter} from "next/navigation";
+import EditUrlButton from "@/app/_components/url/edit-url-button";
 
 export default function UrlCard({id, originalUrl}: { id: string; originalUrl: string }) {
 
@@ -14,7 +15,7 @@ export default function UrlCard({id, originalUrl}: { id: string; originalUrl: st
 
   return (
     <div
-      className={"w-full h-full bg-accent p-5 rounded-lg text-accent-content"}>
+      className={"w-full h-full bg-accent p-5 rounded-lg text-accent-content hover:shadow-xl"}>
       <p className={"text-sm"}>
         Original URL
       </p>
@@ -26,9 +27,7 @@ export default function UrlCard({id, originalUrl}: { id: string; originalUrl: st
         <button className="btn btn-square btn-error " onClick={handelUrlDelete}>
           <span className="material-symbols-outlined">delete</span>
         </button>
-        <button className="btn btn-square btn-primary ">
-          <span className="material-symbols-outlined">edit</span>
-        </button>
+        <EditUrlButton id={id} originalUrl={originalUrl}/>
         <button className="btn btn-primary">
           Visit <span className="material-symbols-outlined">open_in_new</span>
         </button>

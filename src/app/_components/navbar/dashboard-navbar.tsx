@@ -1,6 +1,6 @@
 import Link from "next/link";
 import LogoutButton from "@/app/_components/auth/logout-button.component";
-import CreateUrlButton from "@/app/dashboard/navbar/create-url-button";
+import CreateUrlButton from "@/app/_components/url/create-url-button";
 
 export default function DashboardNavbar() {
   return (

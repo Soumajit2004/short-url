@@ -25,6 +25,16 @@ export const createUrl = async (originalUrl: string) => {
   });
 }
 
+export const updateUrl = async (id: string, originalUrl: string) => {
+  const [session, prisma] = await getContext()
+
+  return prisma.link.update({
+    //@ts-ignore
+    where: {id: id},
+    data: {originalLink: originalUrl}
+  });
+}
+
 export const fetchUrls = async () => {
   const [session, prisma] = await getContext()
 

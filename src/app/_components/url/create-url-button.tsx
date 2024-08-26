@@ -43,8 +43,8 @@ export default function CreateUrlButton() {
           <p className="py-4">paste the original url below and get a random Short URL</p>
 
           <form id={"linkForm"} onSubmit={handleSubmit(onSubmit)}>
-            <textarea className="textarea textarea-bordered w-full"
-                      placeholder="Original URL" {...register("originalUrl", {required: true})}></textarea>
+            <input className="textarea textarea-bordered w-full"
+                   placeholder="Original URL" {...register("originalUrl", {required: true})}></input>
             {errors.originalUrl && <span className="text-error">Original URL is required</span>}
           </form>
 
