@@ -41,6 +41,12 @@ export const fetchUrls = async () => {
   return prisma.link.findMany({where: {owner: {email: session?.user?.email as string}}});
 }
 
+export const fetchUrlById = async (id: string) => {
+  const [session, prisma] = await getContext()
+
+  return prisma.link.findUniqueOrThrow({where: {id: id}})
+}
+
 export const deleteUrl = async (id: string) => {
   const [session, prisma] = await getContext()
 
